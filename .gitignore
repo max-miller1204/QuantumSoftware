@@ -1,0 +1,15 @@
+# Nix
+result
+result-*
+
+# Python venv (created by nix devshell)
+.venv/
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Project-local tool configs
+.config/
+.local/
