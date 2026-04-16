@@ -13,7 +13,7 @@
         python = pkgs.python313;
 
         tex = pkgs.texlive.combine {
-          inherit (pkgs.texlive) scheme-full;
+          inherit (pkgs.texlive) scheme-medium;
         };
       in
       {
@@ -22,20 +22,23 @@
             python
             tex
             pkgs.pandoc
-            pkgs.git
           ];
 
           shellHook = ''
             VENV_DIR="$PWD/.venv"
-            if [ ! -d "$VENV_DIR" ]; then
+            if [ ! -f "$VENV_DIR/.setup-done" ]; then
+              rm -rf "$VENV_DIR"
               echo "Creating venv..."
               ${python}/bin/python -m venv "$VENV_DIR"
               "$VENV_DIR/bin/pip" install --quiet \
                 numpy scipy matplotlib networkx \
                 jupyter notebook nbconvert ipykernel \
                 qiskit cookiecutter
-              "$VENV_DIR/bin/pip" install --quiet -e "$PWD/montecarlo-pkg"
+              if [ -d "$PWD/montecarlo-pkg" ]; then
+                "$VENV_DIR/bin/pip" install --quiet -e "$PWD/montecarlo-pkg"
+              fi
               "$VENV_DIR/bin/python" -m ipykernel install --user --name quantumsoftware --display-name "QuantumSoftware"
+              touch "$VENV_DIR/.setup-done"
             fi
             export PATH="$VENV_DIR/bin:$PATH"
 

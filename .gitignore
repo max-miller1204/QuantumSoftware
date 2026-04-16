@@ -13,3 +13,6 @@ __pycache__/
 # Project-local tool configs
 .config/
 .local/
+
+# direnv
+.envrc
