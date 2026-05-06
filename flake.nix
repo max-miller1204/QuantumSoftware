@@ -37,7 +37,7 @@
               "$VENV_DIR/bin/pip" install --quiet \
                 numpy scipy matplotlib networkx \
                 jupyter notebook nbconvert ipykernel \
-                qiskit cookiecutter
+                qiskit qiskit-aer pylatexenc cookiecutter
               if [ -d "$PWD/montecarlo-pkg" ]; then
                 "$VENV_DIR/bin/pip" install --quiet -e "$PWD/montecarlo-pkg"
               fi

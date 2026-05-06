@@ -25,8 +25,9 @@ class MonteCarlo:
 
         For each MC step, sweep over all sites proposing single spin flips.
         Accept or reject based on the Metropolis criterion:
-          - If dE <= 0: accept
-          - If dE > 0: accept with probability exp(-dE/T)
+
+        - If dE <= 0: accept
+        - If dE > 0: accept with probability exp(-dE/T)
 
         Parameters
         ----------
