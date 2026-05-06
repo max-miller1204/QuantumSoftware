@@ -13,7 +13,11 @@
         python = pkgs.python313;
 
         tex = pkgs.texlive.combine {
-          inherit (pkgs.texlive) scheme-medium;
+          inherit (pkgs.texlive) scheme-medium
+            tcolorbox environ trimspaces etoolbox eurosym ucs
+            adjustbox collectbox titling enumitem rsfs upquote
+            jknapltx parskip caption float needspace pgf
+            tikzfill fontawesome5 pdfcol;
         };
       in
       {
